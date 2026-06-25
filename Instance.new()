@@ -1,0 +1,31 @@
+local Settings = require(script.Parent.settings)
+
+local Gui = {}
+
+function Gui:Create()
+    local player = game.Players.LocalPlayer
+    local playerGui = player:WaitForChild("PlayerGui")
+
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "MyFramework"
+    screenGui.ResetOnSpawn = false
+    screenGui.Parent = playerGui
+
+    local frame = Instance.new("Frame")
+    frame.Size = Settings.GUI.Size
+    frame.Position = UDim2.new(0.5, -250, 0.5, -150)
+    frame.BackgroundColor3 = Settings.Theme.Background
+    frame.Parent = screenGui
+
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, 0, 0, 40)
+    title.BackgroundTransparency = 1
+    title.Text = Settings.GUI.Name
+    title.TextColor3 = Settings.Theme.Text
+    title.TextScaled = true
+    title.Parent = frame
+
+    return screenGui
+end
+
+return Gui
